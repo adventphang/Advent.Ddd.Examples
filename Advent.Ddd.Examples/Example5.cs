@@ -1,6 +1,6 @@
 ﻿#nullable disable
 
-namespace Advent.Ddd.Examples.Example5.Anaemic;
+namespace Advent.Ddd.Examples.Example5;
 
 // The term "anemic" refers to a model where the entities primarily contain
 // data (properties) with little or no behaviour (methods). The business logic

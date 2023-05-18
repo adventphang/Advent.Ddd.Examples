@@ -7,8 +7,8 @@
 // 2. An order cannot be changed once it is shipped
 
 // In the following example, we encapsulate the Order's state and operations
-// inside a single AggregateRoot (Order). The aggregate ensures that all change
-// to its internal state (OrderLine and shipping the order) maintains the
+// inside a single aggregate root `Order`. The aggregate ensures that all change
+// to its internal state (`OrderLine` and shipping the order) maintains the
 // business rules.
 
 // Specifically:
