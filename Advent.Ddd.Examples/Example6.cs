@@ -1,5 +1,7 @@
 ﻿namespace Advent.Ddd.Examples.Example6;
 
+// Rule #6 - method represents domain behaviour
+//
 // In a basic or naive model, we might have operations (methods) like
 // SetBalance for a BankAccount. However, these don't represent meaningful
 // behaviours in the banking domain.
