@@ -1,9 +1,8 @@
-﻿using System;
-namespace Advent.Ddd.Examples.Example6;
+﻿namespace Advent.Ddd.Examples.Example6;
 
 // In a basic or naive model, we might have operations (methods) like
-// IncreaseBalance and DecreaseBalance for a BankAccount.
-// However, these don't represent meaningful behaviours in the banking domain.
+// SetBalance for a BankAccount. However, these don't represent meaningful
+// behaviours in the banking domain.
 //
 // In banking, we talk about Depositing and Withdrawing money,
 // not increasing or decreasing a balance.
@@ -17,14 +16,9 @@ public class BankAccount
 
     // The following methods changes the state without encapsulating business rules
 
-    public void IncreaseBalance(decimal amount)
+    public void SetBalance(decimal balance)
     {
-        Balance += amount;
-    }
-
-    public void DecreaseBalance(decimal amount)
-    {
-        Balance -= amount;
+        Balance = balance;
     }
 
     #endregion
