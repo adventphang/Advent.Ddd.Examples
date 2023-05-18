@@ -92,7 +92,8 @@ public class Order
         else
         {
             // Otherwise, update existing order line if there's one,
-            // or add a new order line.
+            // or add a new order line. We attempt to maintain the order line
+            // ordering
 
             var newOrderLine = new OrderLine(productId, quantity, unitPrice);
 
