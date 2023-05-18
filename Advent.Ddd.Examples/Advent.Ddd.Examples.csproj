@@ -11,9 +11,11 @@
     <None Remove="01-difference\" />
     <None Remove="Example2\" />
     <None Remove="Example4\" />
+    <None Remove="Example5\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Example2\" />
     <Folder Include="Example4\" />
+    <Folder Include="Example5\" />
   </ItemGroup>
 </Project>
