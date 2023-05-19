@@ -8,6 +8,21 @@
 //
 // In banking, we talk about Depositing and Withdrawing money,
 // not increasing or decreasing a balance.
+//
+// When naming methods, follow the best practices:
+//
+// 1. Use uniquitous language - if domain experts call a process "Terminate",
+//    name the same method as "Terminate". This ensures model accurately
+//    reflects the domain, and is understandable to both developers and domain
+//    experts.
+//
+// 2. Start with a Verb - Operations should start with a verb, because they
+//    perform an action or behaviour. Examples: Cancel, Ship, Terminate
+//
+// 3. Avoid CRUD-style naming - Name should reflect business operations.
+//    Instead of SetTerminationTime, use Terminate
+//    Instead of Update, use ChangeBillingFrequency, ChangeBillingAddress
+//    Instead of SaveOrder, use PlaceOrder
 
 public class BankAccount
 {

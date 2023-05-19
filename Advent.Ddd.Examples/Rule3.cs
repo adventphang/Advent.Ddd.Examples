@@ -1,6 +1,6 @@
 ﻿namespace Advent.Ddd.Examples.Example1;
 
-// Rule #1 - Enforce rules (invariants) within aggregate boundary
+// Enforce rules (invariants) within aggregate boundary
 //
 // The rules (invariants) we want to enforce is:
 // 1. An order cannot be shipped if it has no order lines
