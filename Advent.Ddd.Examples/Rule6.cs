@@ -23,11 +23,23 @@
 //    Instead of SetTerminationTime, use Terminate
 //    Instead of Update, use ChangeBillingFrequency, ChangeBillingAddress
 //    Instead of SaveOrder, use PlaceOrder
+//
+// Finally, a domain method generally raises a domain event.
 
-public class BankAccount
+public class BankAccount : BaseAggregateRoot
 {
-    public int Id { get; private set; }
+    public string CustomerName { get; private set; } = null!;
     public decimal Balance { get; private set; }
+
+    #region Constructors
+
+    private BankAccount(Guid id, string customerName)
+        : base(id)
+    {
+        CustomerName = customerName;
+    }
+
+    #endregion
 
     #region Don't do this - this doesn't represent domain behaviour
 
@@ -38,9 +50,36 @@ public class BankAccount
         Balance = balance;
     }
 
+    public void SetCustomer(string customerName)
+    {
+        CustomerName = customerName;
+    }
+
     #endregion
 
     #region Do this instead - this represents a domain behaviour
+
+    public static BankAccount Open(Guid id, string customerName)
+    {
+        if (string.IsNullOrWhiteSpace(customerName))
+            throw new ArgumentException("Invalid customer name"); 
+
+        var account = new BankAccount(id, customerName);
+        account.AddDomainEvent(new BankAccountOpened(id, customerName));
+        return account;
+    }
+
+    public void RenameCustomer(string customerName)
+    {
+        if (string.IsNullOrWhiteSpace(customerName))
+            throw new ArgumentException("Invalid customer name");
+
+        if (customerName == CustomerName)
+            return;
+
+        CustomerName = customerName;
+        AddDomainEvent(new BankAccountCustomerRenamed(Id, CustomerName));
+    }
 
     public void Deposit(decimal amount)
     {
@@ -48,6 +87,8 @@ public class BankAccount
             throw new ArgumentException("Deposit amount must be positive.", nameof(amount));
 
         Balance += amount;
+
+        AddDomainEvent(new BackAccountDeposited(Id, amount, Balance));
     }
 
     // Do this instead - this represents a domain behavior
@@ -59,7 +100,27 @@ public class BankAccount
             throw new InvalidOperationException("Insufficient balance.");
 
         Balance -= amount;
+
+        AddDomainEvent(new BackAccountDeposited(Id, amount, Balance));
     }
 
     #endregion
 }
+
+public record BankAccountOpened(
+    Guid BankAccountId,
+    string CustomerName);
+
+public record BankAccountCustomerRenamed(
+    Guid BankAccountId,
+    string CustomerName);
+
+public record BackAccountDeposited(
+    Guid BankAccountId,
+    decimal Amount,
+    decimal NewBalance);
+
+public record BackAccountWithdrawn(
+    Guid BankAccountId,
+    decimal Amount,
+    decimal NewBalance);
