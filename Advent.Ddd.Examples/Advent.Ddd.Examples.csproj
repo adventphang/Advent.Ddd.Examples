@@ -10,4 +10,7 @@
   <ItemGroup>
     <None Remove="01-difference\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Exercise\solution %28copy%29.cs" />
+  </ItemGroup>
 </Project>
