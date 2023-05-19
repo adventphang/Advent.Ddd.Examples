@@ -2,7 +2,7 @@
 
 namespace Advent.Ddd.Examples.Example5;
 
-// Rule #5 - No anaemic model
+// No anaemic model
 //
 // The term "anemic" refers to a model where the entities primarily contain
 // data (properties) with little or no behaviour (methods). The business logic

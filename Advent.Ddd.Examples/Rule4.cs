@@ -1,6 +1,6 @@
 ﻿namespace Advent.Ddd.Examples.Example2;
 
-// Rule #2 - Always consistent
+// Always consistent
 //
 // The principle of keeping the aggregate root responsible for the integrity
 // of the aggregate ensures that all interactions with members of the aggregate

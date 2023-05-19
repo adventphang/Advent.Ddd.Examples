@@ -1,6 +1,6 @@
 ﻿namespace Advent.Ddd.Examples.Example4;
 
-// Rule #4 - Reference other aggregates by their aggregate root identity
+// Reference other aggregates by their aggregate root identity
 //
 // In Domain-Driven Design, one of the key principles is to keep aggregates
 // separate and only reference other aggregates by their identity. This practice
