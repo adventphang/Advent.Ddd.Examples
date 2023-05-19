@@ -41,7 +41,7 @@ public class Order
 {
     public Guid Id { get; private set; }
     public Guid? AccountId { get; private set; }
-
+    
     public IReadOnlyList<OrderLine> OrderLines { get; private set; } =
         Array.Empty<OrderLine>();
 
@@ -54,7 +54,7 @@ public class Order
         Id = id;
     }
 
-    public void UpdateAccount(Guid accountId) => AccountId = accountId;
+    public void LinkAccount(Guid accountId) => AccountId = accountId;
 
     public void UpdateDiscount(decimal discount)
     {

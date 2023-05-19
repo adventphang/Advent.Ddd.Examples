@@ -88,10 +88,9 @@ public class BankAccount : BaseAggregateRoot
 
         Balance += amount;
 
-        AddDomainEvent(new BackAccountDeposited(Id, amount, Balance));
+        AddDomainEvent(new BankAccountDeposited(Id, amount, Balance));
     }
 
-    // Do this instead - this represents a domain behavior
     public void Withdraw(decimal amount)
     {
         if (amount <= 0)
@@ -101,7 +100,7 @@ public class BankAccount : BaseAggregateRoot
 
         Balance -= amount;
 
-        AddDomainEvent(new BackAccountDeposited(Id, amount, Balance));
+        AddDomainEvent(new BankAccountWithdrawn(Id, amount, Balance));
     }
 
     #endregion
@@ -115,12 +114,12 @@ public record BankAccountCustomerRenamed(
     Guid BankAccountId,
     string CustomerName);
 
-public record BackAccountDeposited(
+public record BankAccountDeposited(
     Guid BankAccountId,
     decimal Amount,
     decimal NewBalance);
 
-public record BackAccountWithdrawn(
+public record BankAccountWithdrawn(
     Guid BankAccountId,
     decimal Amount,
     decimal NewBalance);

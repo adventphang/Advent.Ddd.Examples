@@ -31,7 +31,7 @@ public class OrderAppService
         public int Quantity { get; set; }
     }
 
-    public void AddOrderLine(AddOrderLineInput input)
+    public void AddOrderLine(AddOrderLineInput dto)
     {
         // Simplified: get order, get product, validate, create order line
         Order order = new();
